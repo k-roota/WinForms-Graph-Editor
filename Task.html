@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+	<title>Windows Forms - zadanie 2</title>
+	<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+</head>
+<body>
+<h4>Część 1</h4>
+<p>Edytor grafów</p>
+<ul>
+	<li><a href="GraphEditorLab.exe">Aplikacja przykładowa</a></li>
+	<li>Okno główne:
+    <ul>
+		<li>Okno pojawia się na środku ekranu</li>
+	    <li>Minimalny rozmiar okna: 800x600</li>
+		<li>Okno dzieli się na dwa główne obszary: lewy - obszar roboczy grafu, 
+		zajmujący 80% szerokości okna oraz prawy obszar zajmujący pozostałe 20% okna.</li>
+		<li>Dodatkowo prawy obszar jest podzielony w pionie: sekcja język i sekcja import/eksport ma stałą wysokość,
+		podczas gdy sekcja edycji zajmuje pozostałą część ekranu w pionie.</li>
+		<li>Każda sekcja z obszaru po prawej stronie posiada kontener w postaci group boxa.</li>
+		<li>Sekcja edycji jest początkowo pusta, a pozostałe sekcje posiadają po 2 nieaktywne 
+		przyciski (patrz: aplikacja przykładowa)</li>
+		<li>Bitmapa obszaru roboczego zawsze dostosowuje swój rozmiar do rozmiaru okna.</li>
+    </ul>
+	</li>
+	<li>Dodawanie wierzchołków:
+       <ul>
+        <li>Kliknięcie LPM w obszar roboczy powoduje dodanie wierzchołka w postaci okręgu.</li>
+        <li>Dodane do grafu wierzchołki powinny zachowywać swoje pozycje niezależnie od aktualnego rozmiaru okna. 
+		Żaden wierzchołek nie powinien znikać.</li>
+		<li>Okręgi reprezentujące wierzchołki mają stały, ustalony arbitralnie rozmiar.</li>
+		<li>Nowo tworzone wierzchołki mają nadawany numer, który pojawia się wyśrodkowany wewnątrz wierzchołka (2 etap).</li>
+		<li>Nie można dodać wierzchołka do grafu tak, aby kolidował on z innym wierzchołkiem (2 etap).</li>
+	   </ul>
+	</li>
+    <li>Kolor wierzchołka:
+       <ul>
+        <li>W sekcji edycji należy dodać przycisk pozwalający na zmianę koloru dodawanych wierzchołków.</li>
+        <li>Obok przycisku widnieje ikonka przyjmująca aktualnie wybrany kolor dodawania wierzchołków.</li>
+		<li>Indeksy wewnątrz wierzchołków również przyjmują kolor wierzchołka.</li>
+	   </ul>
+	</li>
+  <li>Wskazówki:
+    <ul>
+		<li><i>Informacje o grafie powinny być przechowywane w formie wektorowej.</i></li>
+        <li>TableLayoutPanel, RowSpan/ColumnSpan Property, PictureBox, SizeChanged Event</li>
+        <li>MouseDown Event, Graphics methods, Refresh method</li>
+    </ul>
+  </li>
+  <li><i>Uwaga: We wszystkich wątpliwych i nieopisanych aspektach obowiązuje odtwarzanie zachowania programu wzorcowego (poza ewentualnymi błędami).</i></li>
+</ul>
+
+<ul>
+	<li>Punktacja:
+	<ul>
+		<li>"Okno główne" i "Dodawanie wierzchołków" (bez ostatniego podpunktu): 4 punkty</li>
+		<li>"Kolor wierzchołka" i dwa ostatnie podpunkty sekcji "Dodawanie wierzchołków": 4 punkty</li>
+		<li><i>Uwaga: nie ma możliwości zdobycia punktów za niepełne funkcjonalności</i></li>
+	</ul>
+	</li>
+</ul>
+
+<h4>Część 2</h4>
+<ul>
+  <li><a href="GraphEditorHome.exe">Aplikacja przykładowa</a></li>
+  <li>Plik:
+       <ul>
+	   <li>Graf może być zapisywany oraz wczytywany z plików o rozszerzeniu .graph.</li>
+	   <li>Zapisane powinny być wszystkie niezbędne informacje o grafie (oprócz zaznaczenia), tak, aby po wczytaniu 
+	   uzyskać identyczny efekt na bitmapie.</li>
+	   <li>Nie mogą być zapisane żadne nadmiarowe informacje, lub informacje niezgodne z faktycznym stanem grafu.</li>
+	   <li>W przypadku wadliwych plików użytkownik powinien być informowany o błędzie.</li>
+	   <li>Graf można wyczyścić przyciskiem.</li>
+       </ul>
+  </li>
+  <li>Zaznaczanie wierzchołków:
+       <ul>
+	    <li>Kliknięcie PPM na istniejący wierzchołek powoduje jego zaznaczenie.</li>
+		<li>Zaznaczony wierzchołek rysowany jest linią przerywaną.</li>
+		<li>Zaznaczony wierzchołek można usunąć wciskając klawisz DEL lub klikając przycisk, który jest aktywny tylko wtedy,
+		 gdy jest zaznaczony jakiś wierzchołek grafu.</li>
+		<li>Po usunięciu wierzchołka numery pozostałych wierzchołków powinny się odpowiednio przeliczyć.</li>
+		<li>Kliknięcie PPM na pozostały obszar roboczy powoduje odznaczenie wierzchołka.</li>
+		<li>Zmiana koloru tworzenia wierzchołków zmienia też kolor zaznaczonego wierzchołka.</li>
+		<li>Podczas, gdy kilka wierzchołków jest bardzo blisko siebie, zaznaczony powinien być wierzchołek najbliższy kursorowi.</li>
+       </ul>
+  </li>
+  <li>Krawędzie:
+       <ul>
+	    <li>Podczas, gdy jeden z wierzchołków jest zaznaczony, kliknięcie na inny wierzchołek powoduje dodanie krawędzi 
+		między nimi.</li>
+	    <li>Gdy użytkownik kliknie w wierzchołek, który już jest połączony krawędzią z zaznaczonym, krawędź ta zostaje usunięta.</li>
+		<li>Krawędzie rysowane są zawsze pod wierzchołkami i łączą ich brzegi.</li>
+		<li>Usunięcie wierzchołka powoduje również usunięcie wszystkich krawędzi z nim połączonych.</li>
+		</ul>
+  </li>
+  <li>Poruszanie wierzchołkiem:
+       <ul>
+	    <li>Kliknięcie ŚPM (kółko myszki) w obszar roboczy powoduje poruszanie zaznaczonym wierzchołkiem.</li>
+	    <li>Poruszany wierzchołek może nakładać się z innym wierzchołkiem.</li>
+		<li>Podczas poruszania wierzchołka poruszają się też wszystkie połączone z nim krawędzie.</li>
+		<li>Podczas poruszania wierzchołka nadal można wykonywać inne akcje, np. dodawanie kolejnych wierzchołków.</li>
+		<li>Przy puszczeniu wierzchołka poza obszarem roboczym, wierzchołek powinien być "ściągany" na jego brzeg, tak aby był nadal widoczny.</li>
+		</ul>
+  </li>
+  <li>Języki i lokalizacja:
+       <ul>
+	   <li>Aplikacja powinna wspierać lokalizację i obsługiwać dwa dowolne języki.</li>
+	   <li>Przy włączeniu aplikacja jest ustawiona na język polski.</li>
+		<li>Sekcja "Język" zawiera dwa przyciski które zmieniają aktualne culture info. Każdy napis 
+		powinien zostać zmieniony na odpowiednik w innym języku.</br><b>Uwaga:</b> powinno być to wykonane przy użyciu mechanizmu lokalizacji
+		- podmienianie właściwości Text/Title nie będzie punktowane</li>
+		<li>Wszystkie kontrolki powinny być poprawnie przeładowane po zmianie lokalizacji.</li>
+		<li>Okno główne powinno pozostać w tej samej pozycji oraz być tej samej wielkości.</li>
+		</ul>
+  </li>
+
+  <li>Wskazówki:
+    <ul>
+        <li>MouseMove, MouseUp Events</li>
+        <li>Invalidate method, DashPattern</li>
+        <li>Form.Localizable, CultureInfo.CurrentUICulture, ResourceManager</li>
+    </ul>
+  </li>
+  <li><i>Uwaga: We wszystkich wątpliwych i nieopisanych aspektach obowiązuje odtwarzanie zachowania programu wzorcowego (poza ewentualnymi błędami).</i></li>
+</ul>
+<ul>
+	<li>Orientacyjna punktacja:
+	<ul>
+		<li> poprawne wczytywanie i zapisywanie plików: 2 punkty</li>`
+        <li> dodawanie i usuwanie krawędzi: 2 punkty </li>
+		<li> poruszanie wierzchołkami: 2 punkty</li>
+		<li> poprawne usuwanie wierzchołków: 1 punkt</li>
+        <li> zaznaczanie wierzchołków + zmiana kolorów: 2 punkty </li>
+		<li> lokalizacja i zmiana języka: 2 punkty </li>
+        <li> poprawne zachowanie się aplikacji po zmianie lokalizacji: 1 punkt </li>
+		
+		<li><i>Uwaga: aby oddać cz.2 należy spełnić wszystkie funkcjonalności z cz.1</i></li>
+
+	</ul>
+	</li>
+</ul>
+</body>
+
+</html>
